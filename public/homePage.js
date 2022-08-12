@@ -74,14 +74,17 @@ ApiConnector.getFavorites(respons => {
     }
 });
 
+
+
+
 favoritesWidget.addUserCallback = function (data) {
     ApiConnector.addUserToFavorites(data, respons => {
         if (respons.success) {
             favoritesWidget.clearTable();
             favoritesWidget.fillTable(respons.data);
-            moneyManager.updateUsersList(respons.data);
+            favoritesWidget.updateUsersList(respons.data);
         } else {
-            moneyManager.setMessage(respons.success, respons.error);
+            favoritesWidget.setMessage(respons.success, respons.error);
         }
     });
 };
@@ -91,9 +94,9 @@ favoritesWidget.removeUserCallback = function (data) {
         if (respons.success) {
             favoritesWidget.clearTable();
             favoritesWidget.fillTable(respons.data);
-            moneyManager.updateUsersList(respons.data);
+            favoritesWidget.updateUsersList(respons.data);
         } else {
-            moneyManager.setMessage(respons.success, respons.error);
+            favoritesWidget.setMessage(respons.success, respons.error);
         }
     });
 };
